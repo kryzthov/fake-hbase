@@ -36,6 +36,10 @@
   </description>
   <url>http://www.kiji.org</url>
 
+  <properties>
+    <scala.version>2.10.3</scala.version>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
@@ -54,7 +58,7 @@
               <args>
                 <arg>-unchecked</arg>
                 <arg>-deprecation</arg>
-                <arg>-explaintypes</arg>
+                <!-- <arg>-explaintypes</arg> -->
               </args>
               <sendJavaToScalac>true</sendJavaToScalac>
             </configuration>
@@ -69,6 +73,7 @@
     <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
       <scope>compile</scope>
     </dependency>
 
@@ -99,11 +104,6 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_${scala.version}</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <repositories>
@@ -111,11 +111,15 @@
       <id>kiji-repos</id>
       <name>kiji-repos</name>
       <url>https://repo.wibidata.com/artifactory/kiji</url>
+      <snapshots> <enabled>false</enabled> </snapshots>
+      <releases> <enabled>true</enabled> </releases>
     </repository>
     <repository>
       <id>kiji-nightly</id>
       <name>kiji-nightly</name>
       <url>https://repo.wibidata.com/artifactory/kiji-nightly</url>
+      <snapshots> <enabled>true</enabled> </snapshots>
+      <releases> <enabled>false</enabled> </releases>
     </repository>
   </repositories>
 
